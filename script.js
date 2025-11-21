@@ -1023,43 +1023,142 @@ function showQuickAlert() {
 
 function loadAnalytics() {
     // Market summary
-    document.getElementById('marketSummary').innerHTML = `
-        <div class="summary-stat">📈 Job Market Growth: +18%</div>
-        <div class="summary-stat">💰 Average Salary: $32,000</div>
-        <div class="summary-stat">🔥 Hottest Skill: Marketing</div>
-        <div class="summary-stat">📍 Top Location: Kigali</div>
-    `;
+    const marketSummaryEl = document.getElementById('marketSummary');
+    if (marketSummaryEl) {
+        marketSummaryEl.innerHTML = `
+            <div class="summary-item">
+                <div class="summary-number">2,847</div>
+                <div class="summary-label">Total Jobs</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-number">+18%</div>
+                <div class="summary-label">Growth This Month</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-number">$32,500</div>
+                <div class="summary-label">Average Salary</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-number">156</div>
+                <div class="summary-label">New Today</div>
+            </div>
+        `;
+    }
     
     // Top skills
     const skills = [
-        { name: 'Marketing', demand: 92 },
-        { name: 'Financial Analysis', demand: 85 },
-        { name: 'Customer Service', demand: 78 },
-        { name: 'Project Management', demand: 74 },
-        { name: 'Agriculture', demand: 68 }
+        { name: 'Marketing', demand: 92, growth: '+15%' },
+        { name: 'Financial Analysis', demand: 85, growth: '+8%' },
+        { name: 'Customer Service', demand: 78, growth: '+12%' },
+        { name: 'Project Management', demand: 74, growth: '+6%' },
+        { name: 'Agriculture', demand: 68, growth: '+22%' }
     ];
     
-    document.getElementById('skillsList').innerHTML = skills.map(skill => `
-        <div class="skill-item">
-            <span class="skill-name">${skill.name}</span>
-            <div class="skill-bar">
-                <div class="skill-progress" style="width: ${skill.demand}%"></div>
+    const skillsListEl = document.getElementById('skillsList');
+    if (skillsListEl) {
+        skillsListEl.innerHTML = skills.map(skill => `
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">${skill.name}</span>
+                    <span class="skill-growth positive">${skill.growth}</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: ${skill.demand}%"></div>
+                </div>
+                <span class="skill-percentage">${skill.demand}%</span>
             </div>
-            <span class="skill-demand">${skill.demand}%</span>
-        </div>
-    `).join('');
+        `).join('');
+    }
     
     // Live updates
     const updates = [
-        '🆕 8 new Marketing Manager jobs posted',
-        '📈 Tourism sector salaries up 12%',
-        '🔥 Agricultural specialists in high demand',
-        '💼 International organizations hiring +25%'
+        { text: '🆕 8 new Marketing Manager jobs posted', time: '2 min ago' },
+        { text: '📈 Tourism sector salaries up 12%', time: '15 min ago' },
+        { text: '🔥 Agricultural specialists in high demand', time: '1 hour ago' },
+        { text: '💼 International organizations hiring +25%', time: '2 hours ago' }
     ];
     
-    document.getElementById('liveUpdates').innerHTML = updates.map(update => 
-        `<div class="update-item">${update}</div>`
-    ).join('');
+    const liveUpdatesEl = document.getElementById('liveUpdates');
+    if (liveUpdatesEl) {
+        liveUpdatesEl.innerHTML = updates.map(update => `
+            <div class="update-item">
+                <div class="update-text">${update.text}</div>
+                <div class="update-time">${update.time}</div>
+            </div>
+        `).join('');
+    }
+    
+    // Initialize charts if canvas elements exist
+    initializeCharts();
+}
+
+function initializeCharts() {
+    // Salary Chart
+    const salaryCanvas = document.getElementById('salaryChart');
+    if (salaryCanvas) {
+        const ctx = salaryCanvas.getContext('2d');
+        ctx.fillStyle = '#667eea';
+        ctx.fillRect(10, 150, 50, 40);
+        ctx.fillRect(70, 120, 50, 70);
+        ctx.fillRect(130, 100, 50, 90);
+        ctx.fillRect(190, 80, 50, 110);
+        ctx.fillStyle = '#495057';
+        ctx.font = '12px Arial';
+        ctx.fillText('Salary Trends', 10, 20);
+    }
+    
+    // Demand Chart
+    const demandCanvas = document.getElementById('demandChart');
+    if (demandCanvas) {
+        const ctx = demandCanvas.getContext('2d');
+        ctx.strokeStyle = '#28a745';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(10, 150);
+        ctx.lineTo(80, 120);
+        ctx.lineTo(150, 100);
+        ctx.lineTo(220, 80);
+        ctx.stroke();
+        ctx.fillStyle = '#495057';
+        ctx.font = '12px Arial';
+        ctx.fillText('Job Demand Growth', 10, 20);
+    }
+    
+    // Category Chart
+    const categoryCanvas = document.getElementById('categoryChart');
+    if (categoryCanvas) {
+        const ctx = categoryCanvas.getContext('2d');
+        const centerX = 150;
+        const centerY = 100;
+        const radius = 80;
+        
+        // Draw pie chart segments
+        const categories = [
+            { name: 'Marketing', percentage: 30, color: '#667eea' },
+            { name: 'Finance', percentage: 25, color: '#28a745' },
+            { name: 'Tourism', percentage: 20, color: '#ffc107' },
+            { name: 'Agriculture', percentage: 15, color: '#17a2b8' },
+            { name: 'Other', percentage: 10, color: '#6c757d' }
+        ];
+        
+        let currentAngle = 0;
+        categories.forEach(category => {
+            const sliceAngle = (category.percentage / 100) * 2 * Math.PI;
+            
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.arc(centerX, centerY, radius, currentAngle, currentAngle + sliceAngle);
+            ctx.closePath();
+            ctx.fillStyle = category.color;
+            ctx.fill();
+            
+            currentAngle += sliceAngle;
+        });
+        
+        ctx.fillStyle = '#495057';
+        ctx.font = '12px Arial';
+        ctx.fillText('Job Categories', 10, 20);
+    }
 }
 
 function showNotification(message, type = 'info') {
@@ -1728,6 +1827,13 @@ function updateLiveAnalytics() {
 
 // Update analytics every 2 minutes
 setInterval(updateLiveAnalytics, 120000);
+
+// Initialize analytics on first load
+setTimeout(() => {
+    if (document.getElementById('analyticsSection').classList.contains('active')) {
+        loadAnalytics();
+    }
+}, 1000);
 
 // Enhanced job alerts with smart matching
 function createSmartAlert() {
