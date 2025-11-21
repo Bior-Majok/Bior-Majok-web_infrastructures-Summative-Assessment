@@ -2,7 +2,7 @@
 
 A comprehensive job search platform that aggregates job listings from multiple APIs, providing users with powerful search, filtering, and application tracking capabilities.
 
-## 🎯 Purpose
+##  Purpose
 
 Job Market Monitor addresses the real need for centralized job searching by:
 - Aggregating jobs from multiple sources (JSearch, Adzuna, GitHub Jobs)
@@ -10,7 +10,7 @@ Job Market Monitor addresses the real need for centralized job searching by:
 - Offering job application tracking and management
 - Delivering market analytics and insights
 
-## 🚀 Features
+##  Features
 
 - **Multi-API Integration**: Real-time job data from multiple sources
 - **Advanced Search**: Filter by salary, location, job type, experience level
@@ -44,7 +44,7 @@ Job Market Monitor addresses the real need for centralized job searching by:
    - **Adzuna API**: Get from [Adzuna Developer Portal](https://developer.adzuna.com/)
 3. Click "Save All Keys" and "Test Connection"
 
-## 🌐 Deployment
+##  Deployment
 
 ### Server Requirements
 - Web01 and Web02: Standard web servers
@@ -97,7 +97,7 @@ Job Market Monitor addresses the real need for centralized job searching by:
 - **Note**: Service deprecated, used as fallback only
 - **Credit**: GitHub Jobs API
 
-## 🎮 Usage
+##  Usage
 
 1. **Search Jobs**: Enter keywords and location
 2. **Filter Results**: Use salary, type, experience filters
@@ -107,7 +107,7 @@ Job Market Monitor addresses the real need for centralized job searching by:
 6. **Set Alerts**: Create notifications for new matching jobs
 7. **View Analytics**: Check market trends and insights
 
-## 🚧 Challenges & Solutions
+##  Challenges & Solutions
 
 ### Challenge 1: API Rate Limits
 **Solution**: Implemented caching and multiple API fallbacks
@@ -118,20 +118,20 @@ Job Market Monitor addresses the real need for centralized job searching by:
 ### Challenge 3: Data Consistency
 **Solution**: Standardized job data format across all APIs
 
-## 🔒 Security
+##  Security
 
 - API keys stored in localStorage (client-side)
 - No sensitive data in repository
 - Input validation for all user inputs
 - Error handling for API failures
 
-## 📊 Testing
+##  Testing
 
 - **Local Testing**: Open application and test all features
 - **API Testing**: Use "Test Connection" in settings
 - **Load Balancer Testing**: Access via Lb01 IP and verify distribution
 
-## 🙏 Credits
+##  Credits
 
 - **JSearch API**: Job search data via RapidAPI
 - **Adzuna API**: Additional job listings
@@ -139,10 +139,10 @@ Job Market Monitor addresses the real need for centralized job searching by:
 - **Font Awesome**: Icons (if used)
 - **Google Fonts**: Typography (if used)
 
-## 📝 License
+##  License
 
 This project is for educational purposes as part of Web Infrastructure assignment.
 
-## 👨‍💻 Author
+## Author
 
 Bior Majok - Web Infrastructure Summative Assessment
