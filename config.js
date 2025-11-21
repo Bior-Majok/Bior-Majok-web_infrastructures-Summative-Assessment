@@ -31,7 +31,7 @@ class ConfigManager {
         this.config.jsearchApiKey = apiKey;
         localStorage.setItem('jsearch_api_key', apiKey);
         if (typeof showNotification === 'function') {
-            showNotification('JSearch API key configured! 🔑', 'success');
+            showNotification('JSearch API key configured!', 'success');
         }
     }
 
@@ -41,7 +41,7 @@ class ConfigManager {
         localStorage.setItem('adzuna_api_id', apiId);
         localStorage.setItem('adzuna_api_key', apiKey);
         if (typeof showNotification === 'function') {
-            showNotification('Adzuna API credentials configured! 🔑', 'success');
+            showNotification('Adzuna API credentials configured!', 'success');
         }
     }
 
@@ -68,7 +68,7 @@ class ConfigManager {
         localStorage.removeItem('adzuna_api_id');
         localStorage.removeItem('adzuna_api_key');
         if (typeof showNotification === 'function') {
-            showNotification('All API keys cleared! 🗑️', 'info');
+            showNotification('All API keys cleared!', 'info');
         }
     }
 
