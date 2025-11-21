@@ -242,7 +242,7 @@ class JobAPIService {
         } else if (min) {
             return `From $${min.toLocaleString()}`;
         } else if (max) {
-  `Up to $${max.toLocaleString()}`;
+            return `Up to $${max.toLocaleString()}`;
         }
         return 'Salary not specified';
     }
