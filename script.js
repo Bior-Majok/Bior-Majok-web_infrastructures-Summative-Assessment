@@ -892,8 +892,8 @@ function loadSavedJobs() {
             <div class="job-card">
                 <h3>${job.title}</h3>
                 <div class="job-company">${job.company}</div>
-                <div class="job-location">📍 ${job.location}</div>
-                <div class="job-salary">💰 ${job.salary}</div>
+                <div class="job-location">${job.location}</div>
+                <div class="job-salary">${job.salary}</div>
                 <button onclick="removeSavedJob(${job.id})" class="btn-remove">Remove</button>
                 <button onclick="showJobDetails(${job.id})" class="btn-view">View Details</button>
             </div>
@@ -1472,8 +1472,8 @@ function displayJobs(jobs) {
                     <div class="job-rating">${job.rating}</div>
                 </div>
                 <div class="job-company">${job.company}</div>
-                <div class="job-location">📍 ${job.location}</div>
-                <div class="job-salary">💰 ${job.salary}</div>
+                <div class="job-location">${job.location}</div>
+                <div class="job-salary">${job.salary}</div>
                 <div class="job-type">${job.type}</div>
                 <div class="job-posted">${job.posted}</div>
                 <div class="job-applicants">${job.applicants} applicants</div>
